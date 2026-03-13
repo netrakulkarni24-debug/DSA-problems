@@ -5,15 +5,16 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             if(nums[i]==1){
               count++;
+              l=  (Math.max(l,count));
             }
             else{
-            l=  (Math.max(l,count));
+           
             count=0;
             }
         }
         
  
-          return (Math.max(l,count));
+          return l;
        
         
 
