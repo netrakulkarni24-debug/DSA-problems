@@ -11,19 +11,24 @@
 class Solution {
     public ListNode middleNode(ListNode head) {
 
+     int count = 0;
+     ListNode temp = head;
+     while(temp!=null){
+        count++;
+        temp=temp.next;
+     }
 
-        if(head==null  || head.next==null){
-            return head;
-        }
-
-        ListNode fast=head;
-        ListNode slow=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-
-        return slow;
-        
+     int mid = (count/2)+1;
+    ListNode k =head;
+     while(k!=null){
+        mid= mid-1;
+        if(mid==0)
+            break;
+            
+       k=k.next;
+     }
+     
+     
+        return k;
     }
 }
