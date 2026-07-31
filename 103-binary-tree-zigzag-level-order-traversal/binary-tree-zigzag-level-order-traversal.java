@@ -18,7 +18,7 @@ class Solution {
 
         List<List<Integer>> ans = new ArrayList<>();
         Queue<TreeNode> q = new LinkedList<>();
-        boolean lefttoright = true;
+          int level = 0;
 
         if (root == null)
             return ans;
@@ -28,16 +28,16 @@ class Solution {
         while (!q.isEmpty()) {
 
             int size = q.size();
-            LinkedList<Integer> level = new LinkedList<>();
+            LinkedList<Integer> levell = new LinkedList<>();
 
             for (int i = 0; i < size; i++) {
 
                 TreeNode node = q.poll();
 
-                if (lefttoright)
-                    level.addLast(node.val);
+                if (level%2!=0)
+                    levell.addFirst(node.val);
                 else
-                    level.addFirst(node.val);
+                    levell.addLast(node.val);
 
                 if (node.left != null)
                     q.offer(node.left);
@@ -45,9 +45,10 @@ class Solution {
                 if (node.right != null)
                     q.offer(node.right);
             }
+            
 
-            ans.add(level);
-            lefttoright = !lefttoright;
+            ans.add(levell);
+           level++;
         }
 
         return ans;
