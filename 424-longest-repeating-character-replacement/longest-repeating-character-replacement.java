@@ -9,13 +9,13 @@ class Solution {
             for(int right = 0;right<s.length();right++){
                   hash[s.charAt(right)-'A']++;
                   maxfreq=Math.max(maxfreq,hash[s.charAt(right)-'A']);
-                  int windowlength= right-left+1;
-                  if(windowlength-maxfreq>k){
+           
+                  while(right-left+1-maxfreq>k){
                       hash[s.charAt(left)-'A']--;
                       left++;
                   }
 
-                  windowlength = right-left+1;
+                 int  windowlength = right-left+1;
                   maxwindow=Math.max(windowlength,maxwindow);
             }
 
